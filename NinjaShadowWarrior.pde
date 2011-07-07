@@ -8,8 +8,8 @@ import javax.mail.internet.*;//for mailing
 
 /////////////////////VARIABLES////////////////////
 
-//Hi Kaho
-
+//Hi Kaho 
+//WOW THIS IS CONFUSING
 
 
 /////////////////////MAIN CODE/////////////////////
