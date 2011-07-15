@@ -8,33 +8,31 @@ import javax.mail.internet.*;//for mailing
 
 /////////////////////VARIABLES////////////////////
 
-//Hi Kaho 
-//WOW THIS IS CONFUSING
+int mode = 0; //modes REST, GAME, FINAL
 
-
-//TEST BRANCH JULY7  --it's me Kaho
-
-//Master branch
-
-//Master branch test!!
-
-//ase111 branch edit!!
 
 /////////////////////MAIN CODE/////////////////////
 void setup()  {
+
+  //FOR SERIAL COMMUNICATION
+  String portName = Serial.list()[0]; //chooses what is assumed is the port being used for serial communication
+  myPort = new Serial(this, portName, 9600); //sets up the port
 
 }
 
 void draw() {
   
-  
-//================================= REST ================================= 
+  switch(mode) {
 
+    case 0: //REST
 
-//================================= GAME ================================= 
+    case 1: //GAME
 
+    case 2:
 
-//================================= FINAL ================================= 
+    case 3:  
+
+  }
   
   
 }
