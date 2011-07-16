@@ -5,19 +5,30 @@ import processing.serial.*; //library for serial communication
 
 /////////////////////VARIABLES////////////////////
 Serial myPort;  // Create object from Serial class
-int button;
-
+int button = 0; //the value from the big button
+int firstDoubleClick = 0; //to keep track of double clicking
+int timer = 0; //timer for double clicking
+int doubleClickLimit = 1000; //time limit for double clicking 
 /////////////////////FUNCTIONS////////////////////
-void readSerial() {// Function that reads values coming in serial
-  if ( myPort.available() > 0) {  // If data is available,
-     button = myPort.read();
-     if(button == 1) { //if button is pressed
-       if (mode == 0) { //if it is at REST mode, then it starts to game
-         switch(1); //game mode
-       }
-       else if (mode == 1 || mode == 2 || mode = 3) { //if button is pressed at other times
-         switch(0); //resets the game
-       }
-     }   
+
+
+void button() {
+  if (myPort.available() > 0) {  // If data is available,
+    button = myPort.read(); //read the value coming in thru myPort and set it to button
+    if( button == 1) { //if the button is pressed during rest mode, it starts the game
+      if (mode ==0) {
+        mode = 1; //goes to game mode
+      }
+    }
+    else if (firstDoubleClick == 0 && mode!=0) {
+      firstDoubleClick = 1; //this is the first click
+      timer = millis(); //start timer
+    }
+    else if (firstDoubleClick == 1 && (millis() - timer < doubleClickLimit)) {//if the first click has been made and it's still under the time limit
+      firstDoubleClick = 0; //then not the first click anymore
+      timer = 0; //timer resets
+      mode = 0; //game goes back to rest mode
+    }
   }
 }
+

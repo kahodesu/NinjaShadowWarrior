@@ -13,11 +13,15 @@ int mode = 0; //modes REST, GAME, FINAL
 
 /////////////////////MAIN CODE/////////////////////
 void setup()  {
-
+  
+  //BASIC SCREEN STUFF
+  size(1024,768);
+  background(0);
+  smooth();
+  
   //FOR SERIAL COMMUNICATION
   String portName = Serial.list()[0]; //chooses what is assumed is the port being used for serial communication
-  myPort = new Serial(this, portName, 9600); //sets up the port
-
+  myPort = new Serial(this, portName, 9600); //sets up myPort
 }
 
 void draw() {
@@ -25,14 +29,13 @@ void draw() {
   switch(mode) {
 
     case 0: //REST
+      
+    case 1: //SHOW OBJECT
 
-    case 1: //GAME
+    case 2://CAM SET UP,COUNTDOWN and SNAPSHOT
 
-    case 2:
-
-    case 3:  
+    case 3: //CALC
 
   }
-  
-  
+  button();  //checks big button!
 }
